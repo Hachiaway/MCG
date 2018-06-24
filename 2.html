@@ -1,0 +1,72 @@
+﻿
+<!DOCTYPE html>
+<html>
+<script>
+function validate(){
+var username = document.getElementById('username').value; //对应用户名的id
+var password = document.getElementById('password').value;
+
+
+if(!regex(username)){
+alert('请输入合法的用户名');
+return;
+}
+
+
+if(!rege(password)){
+alert('请输入合法密码');
+return;
+}
+
+document.login.submit();
+}
+function regex(value){
+var re = /^[a-zA-Z0-9_]{6,16}$/;
+if(!re.test(value)){
+return false;
+}
+return true;
+}
+function rege(value){
+var ge = /^[0-9]{6,16}$/;
+if(!ge.test(value)){
+return false;
+}
+return true;
+}
+</script>
+<script type="text/javascript">
+
+function showtime(){
+var now=new Date();
+var hours=now.getHours();
+var minutes=now.getMinutes();
+var seconds=now.getSeconds();
+var h='0',m=':0',s=':0';
+if(hours>9) h='';
+			
+if(minutes>9) m=':';
+
+if(seconds>9) s=':';
+
+document.getElementById("myclock").innerHTML="<h1>现在是—"+h+hours+m+minutes+s+seconds+"</h1>";
+ 
+}   
+       
+//setInterval（）方法可以按照指定的周期调用函数或计算表达式  
+        
+var mytime = setInterval("showtime()",1000);
+
+
+</script>
+
+<body onload="showtime()">
+<div id="myclock"></div>
+
+<form name="login">
+用户名：<input type="text" id="username" name="username"/><br/>
+密码：<input type="text" id="password" name="password"/><br/>
+</form>
+<input type="button" value="提交" onclick="validate()"/>
+ </body>
+</html>
